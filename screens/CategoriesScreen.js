@@ -1,26 +1,57 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
+import Colors from "../constants/Colors";
+import { CATEGORIES } from "../data/dummy-data";
 
 const CategoriesScreen = (props) => {
-  return (
-    <View style={{ ...styles.container, ...props.style }}>
-      <Text style={styles.text}>CategoriesScreen</Text>
-      <Button
-        title="Go to Category Meals"
+  const renderGridItem = (itemData) => {
+    return (
+      <TouchableOpacity
+        style={styles.gridItemStyle}
         onPress={() => {
-          props.navigation.navigate({
-            routeName: "CategoryMeals",
-          });
+          props.navigation.navigate({ routeName: "CategoryMeals" });
         }}
-      ></Button>
-    </View>
+      >
+        <View>
+          <Text>{itemData.item.title}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  return (
+    <FlatList
+      data={CATEGORIES}
+      renderItem={renderGridItem}
+      numColumns={2}
+    ></FlatList>
   );
+};
+
+CategoriesScreen.navigationOptions = {
+  headerTitle: "Meal Categories",
+  headerStyle: {
+    backgroundColor: Colors.primary,
+  },
+  headerTintColor: "white",
 };
 
 const styles = StyleSheet.create({
   container: {},
   text: {
     fontFamily: "open-sans-bold",
+  },
+  gridItemStyle: {
+    flex: 1,
+    margin: 15,
+    height: 150,
   },
 });
 
