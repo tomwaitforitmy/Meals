@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "A meals app I created for learning purposes",
+    "githubUrl": "https://github.com/tomwaitforitmy/Meals"
   }
 }
