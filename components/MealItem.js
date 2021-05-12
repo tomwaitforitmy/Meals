@@ -37,12 +37,13 @@ const MealItem = (props) => {
 
 const styles = StyleSheet.create({
   mealItem: {
+    flex: 1,
     height: 200,
-    width: "100%",
+    // width: "100%",
     backgroundColor: "#ccc",
     borderRadius: 15,
     overflow: "hidden",
-    marginVertical: 10,
+    margin: 10,
   },
   mealRow: {
     flexDirection: "row",
