@@ -13,6 +13,17 @@ const MealDetailScreen = (props) => {
   );
 };
 
+//Todo Tommy: Hier sagt er es muss navigationData heissen.
+//Experiment ob es auch props sein kann.
+MealDetailScreen.navigationOptions = (props) => {
+  const mealId = props.navigation.getParam("mealId");
+  const meal = MEALS.find((meal) => meal.id === mealId);
+
+  return {
+    headerTitle: meal.title,
+  };
+};
+
 const styles = StyleSheet.create({
   container: {},
 });
