@@ -1,11 +1,10 @@
 import React from "react";
-import { StyleSheet, Text, View, Button, FlatList } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 import MealItem from "../components/MealItem";
 
 const CategoryMealsScreen = (props) => {
   const categoryId = props.navigation.getParam("categoryId");
-  const selectedCategory = CATEGORIES.find((cat) => cat.id === categoryId);
   const displayedMeals = MEALS.filter(
     (meal) => meal.categoryIds.indexOf(categoryId) >= 0
   );
@@ -34,9 +33,6 @@ const CategoryMealsScreen = (props) => {
     <View style={{ ...styles.container, ...props.style }}>
       <FlatList
         data={displayedMeals}
-        // onPress={() => {
-        //   props.navigation.navigate({ routeName: "MealDetail" });
-        // }}
         renderItem={renderMealItem}
         style={{ width: "100%" }}
       />
