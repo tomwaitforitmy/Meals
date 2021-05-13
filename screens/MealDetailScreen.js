@@ -1,5 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import HeaderButton from "../components/HeaderButton";
 import { MEALS } from "../data/dummy-data";
 
 const MealDetailScreen = (props) => {
@@ -21,6 +23,19 @@ MealDetailScreen.navigationOptions = (props) => {
 
   return {
     headerTitle: meal.title,
+    headerRight: () => {
+      return (
+        <HeaderButtons HeaderButtonComponent={HeaderButton}>
+          <Item
+            title="Favorite"
+            iconName="ios-star"
+            onPress={() => {
+              console.log("fav");
+            }}
+          />
+        </HeaderButtons>
+      );
+    },
   };
 };
 

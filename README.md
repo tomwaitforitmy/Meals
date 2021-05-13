@@ -10,3 +10,4 @@ npm install --save react-navigation-stack
 npm install --save react-navigation-tabs
 npm install --save react-navigation-drawer
 npm install --save react-native-screens #for performance reasons
+npm install --save react-navigation-header-buttons
