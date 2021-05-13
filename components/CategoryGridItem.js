@@ -6,11 +6,11 @@ const CategoryGridItem = (props) => {
   let MyTouchable = GetTouchableComponentForAnyOS();
 
   return (
-    <View style={styles.gridItemStyle}>
-      <MyTouchable onPress={props.onSelect}>
+    <View style={styles.gridItem}>
+      <MyTouchable style={{ flex: 1 }} onPress={props.onSelect}>
         <View
           style={{
-            ...styles.container,
+            ...styles.tile,
             ...{ backgroundColor: props.color },
           }}
         >
@@ -24,7 +24,7 @@ const CategoryGridItem = (props) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  tile: {
     flex: 1,
     borderRadius: 10,
     //only iOS
@@ -38,10 +38,12 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "flex-end",
   },
-  gridItemStyle: {
+  gridItem: {
     flex: 1,
     margin: 10,
     height: 150,
+    borderRadius: 10,
+    overflow: "hidden",
   },
   title: {
     fontFamily: "open-sans",
