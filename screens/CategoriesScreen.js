@@ -36,9 +36,6 @@ CategoriesScreen.navigationOptions = {
 
 const styles = StyleSheet.create({
   container: {},
-  text: {
-    fontFamily: "open-sans-bold",
-  },
 });
 
 export default CategoriesScreen;
