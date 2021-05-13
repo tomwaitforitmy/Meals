@@ -4,7 +4,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-const isNativeFeedbackSupported = () => {
+export const isNativeFeedbackSupported = () => {
   return Platform.OS === "android" && Platform.Version >= 21;
 };
 

@@ -1,6 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { GetTouchableComponentForAnyOS } from "../common_functions/GetTouchableComponentForAnyOS";
+import {
+  GetTouchableComponentForAnyOS,
+  isNativeFeedbackSupported,
+} from "../common_functions/GetTouchableComponentForAnyOS";
 
 const CategoryGridItem = (props) => {
   let MyTouchable = GetTouchableComponentForAnyOS();
@@ -33,7 +36,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 10,
     //end iOS
-    elevation: 3, //only android
     padding: 15,
     justifyContent: "flex-end",
     alignItems: "flex-end",
@@ -43,7 +45,8 @@ const styles = StyleSheet.create({
     margin: 10,
     height: 150,
     borderRadius: 10,
-    overflow: "hidden",
+    overflow: isNativeFeedbackSupported() ? "hidden" : "visible",
+    elevation: 3, //only android
   },
   title: {
     fontFamily: "open-sans",
