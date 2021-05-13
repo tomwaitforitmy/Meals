@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import {
   GetTouchableComponentForAnyOS,
-  isNativeFeedbackSupported,
+  IsNativeFeedbackSupported,
 } from "../common_functions/GetTouchableComponentForAnyOS";
 
 const CategoryGridItem = (props) => {
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     margin: 10,
     height: 150,
     borderRadius: 10,
-    overflow: isNativeFeedbackSupported() ? "hidden" : "visible",
+    overflow: IsNativeFeedbackSupported() ? "hidden" : "visible",
     elevation: 3, //only android
   },
   title: {
