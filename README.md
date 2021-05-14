@@ -11,3 +11,5 @@ npm install --save react-navigation-tabs
 npm install --save react-navigation-drawer
 npm install --save react-native-screens #for performance reasons
 npm install --save react-navigation-header-buttons
+npm install --save react-navigation-material-bottom-tabs
+npm install --save react-native-paper ##no clue, yet, what this is doing
