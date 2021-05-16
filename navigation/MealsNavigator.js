@@ -1,12 +1,9 @@
 import React from "react";
 import { createStackNavigator } from "react-navigation-stack";
-import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createAppContainer } from "react-navigation";
 import { createDrawerNavigator } from "react-navigation-drawer";
 import { Ionicons } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
-import { Platform } from "react-native";
-
 import CategoriesScreen from "../screens/CategoriesScreen";
 import MealDetailScreen from "../screens/MealDetailScreen";
 import FiltersScreen from "../screens/FiltersScreen";
@@ -87,20 +84,10 @@ const myTabScreenConfig = {
   },
 };
 
-const TabNavigator =
-  Platform.OS === "android"
-    ? createMaterialBottomTabNavigator(myTabScreenConfig, {
-        activeColor: "white",
-        shifting: true,
-      })
-    : createBottomTabNavigator(myTabScreenConfig, {
-        tabBarOptions: {
-          labelStyle: {
-            fontFamily: "open-sans",
-          },
-          activeTintColor: Colors.primary,
-        },
-      });
+const TabNavigator = createMaterialBottomTabNavigator(myTabScreenConfig, {
+  activeColor: "white",
+  shifting: true,
+});
 
 const FiltersStackNavigator = createStackNavigator(
   {
