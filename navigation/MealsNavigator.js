@@ -18,6 +18,12 @@ const defaultStackNavigationOptions = {
   headerStyle: {
     backgroundColor: Colors.primary,
   },
+  headerTitleStyle: {
+    fontFamily: "open-sans-bold",
+  },
+  headerBackTitleStyle: {
+    fontFamily: "open-sans",
+  },
   headerTintColor: "white",
   headerTitle: "A dummy title",
 };
@@ -89,6 +95,9 @@ const TabNavigator =
       })
     : createBottomTabNavigator(myTabScreenConfig, {
         tabBarOptions: {
+          labelStyle: {
+            fontFamily: "open-sans",
+          },
           activeTintColor: Colors.primary,
         },
       });
