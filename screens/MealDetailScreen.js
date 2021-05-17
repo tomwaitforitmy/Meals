@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
+import { useSelector } from "react-redux";
+import { StyleSheet, View, ScrollView, Image } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import DefaultText from "../components/DefaultText";
 import HeaderButton from "../components/HeaderButton";
-import { MEALS } from "../data/dummy-data";
 
 const ListItem = (props) => {
   return (
@@ -14,23 +14,27 @@ const ListItem = (props) => {
 };
 
 const MealDetailScreen = (props) => {
+  const availableMeals = useSelector((state) => state.meals.meals);
   const mealId = props.navigation.getParam("mealId");
-  const meal = MEALS.find((meal) => meal.id === mealId);
+  const selectedMeal = availableMeals.find((meal) => meal.id === mealId);
 
   return (
     <ScrollView style={styles.container}>
-      <Image source={{ uri: meal.imageUrl }} style={styles.image}></Image>
+      <Image
+        source={{ uri: selectedMeal.imageUrl }}
+        style={styles.image}
+      ></Image>
       <View style={styles.details}>
-        <DefaultText>{meal.duration}m</DefaultText>
-        <DefaultText>{meal.complexity}</DefaultText>
-        <DefaultText>{meal.affordability}</DefaultText>
+        <DefaultText>{selectedMeal.duration}m</DefaultText>
+        <DefaultText>{selectedMeal.complexity}</DefaultText>
+        <DefaultText>{selectedMeal.affordability}</DefaultText>
       </View>
       <DefaultText style={styles.title}>Ingredients</DefaultText>
-      {meal.ingredients.map((ingredient) => (
+      {selectedMeal.ingredients.map((ingredient) => (
         <ListItem key={ingredient}>{ingredient}</ListItem>
       ))}
       <DefaultText style={styles.title}>Steps</DefaultText>
-      {meal.steps.map((step) => (
+      {selectedMeal.steps.map((step) => (
         <ListItem key={step}>{step}</ListItem>
       ))}
     </ScrollView>
@@ -40,11 +44,10 @@ const MealDetailScreen = (props) => {
 //Todo Tommy: Hier sagt er es muss navigationData heissen.
 //Experiment ob es auch props sein kann.
 MealDetailScreen.navigationOptions = (props) => {
-  const mealId = props.navigation.getParam("mealId");
-  const meal = MEALS.find((meal) => meal.id === mealId);
+  const mealTitle = props.navigation.getParam("mealTitle");
 
   return {
-    headerTitle: meal.title,
+    headerTitle: mealTitle,
     headerRight: () => {
       return (
         <HeaderButtons HeaderButtonComponent={HeaderButton}>
