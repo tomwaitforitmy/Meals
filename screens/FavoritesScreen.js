@@ -4,9 +4,19 @@ import Colors from "../constants/Colors";
 import MealList from "../components/MealList";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
+import { StyleSheet, View } from "react-native";
+import DefaultText from "../components/DefaultText";
 
 const FavoritesScreen = (props) => {
   const favorites = useSelector((state) => state.meals.favoriteMeals);
+
+  if (favorites.length === 0 || !favorites) {
+    return (
+      <View style={styles.dummyContent}>
+        <DefaultText>No favorite meals found. Start adding some!</DefaultText>
+      </View>
+    );
+  }
 
   return <MealList mealsList={favorites} navigation={props.navigation} />;
 };
@@ -33,5 +43,13 @@ FavoritesScreen.navigationOptions = (props) => {
     },
   };
 };
+
+const styles = StyleSheet.create({
+  dummyContent: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 export default FavoritesScreen;

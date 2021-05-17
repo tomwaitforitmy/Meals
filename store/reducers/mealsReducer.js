@@ -19,16 +19,12 @@ const mealsReducer = (state = initialState, action) => {
         return { ...state, favoriteMeals: udpatedFavMeals };
       } else {
         const meal = state.meals.find((meal) => meal.id === action.mealId);
-        return {
-          ...state,
-          favoriteMeals: state.favoriteMeals.concat(meal),
-        };
+        return { ...state, favoriteMeals: state.favoriteMeals.concat(meal) };
       }
     }
     default:
       return state;
   }
-  return state;
 };
 
 export default mealsReducer;
